@@ -6,8 +6,24 @@
         <script type="text/javascript" src="index.js"></script>
     </head>
     <body>
-        <div id="bunny-container">
+        <div class="form-container">
+            <form id="create-bunny-form" style=" ">
+                <h3>Create a Bunny Post!</h3>
+                <input id='input-name' type="text" name="name" value="" placeholder="Enter your bunny name..." class="input-text">
+                <br><br>
+                <textarea id='input-bio' name="bio" rows="8" cols="80" value="" placeholder="Enter about your bunny..."></textarea>
+                <br><br>
+                <input id='input-url' type="text" name="image" value="" placeholder="Enter your bunny image URL..." class="input-text">
+                <br><br>
+                <select id="people" name="people">
+                    <option value="1">Ariel</option>
+                </select>
+                <br><br>
+                <input id= 'create-button' type="submit" name="submit" value="Create New Bunny" class="submit">
+            </form>
+        </div>
         
+        <div id="bunny-container">
         </div>
     </body>
 </html>

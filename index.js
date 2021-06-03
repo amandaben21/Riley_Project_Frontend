@@ -2,6 +2,9 @@ const website = "http://localhost:3000/api/v1/bunnies"
 
 document.addEventListener('DOMContentLoaded', () => {
     getBunnies()
+
+    const createBunnyForm = document.querySelector("create-bunny-form")
+    createBunnyForm.addEventListener("submit",(e) => createFormHandler(e))
 })
 
 function getBunnies() {
@@ -22,4 +25,22 @@ function getBunnies() {
             document.querySelector('#bunny-container').innerHTML += bunnyMarkup
         })
     })
+}
+
+function createFormHandler(e) {
+    e.preventDefault()
+    const nameInput = document.querySelector('#input-name').value 
+    const bioInput = document.querySelector('#input-bio').value
+    const imageInput = document.querySelector('#input-url').value
+    const personId = parseInt(document.querySelector('#people').value)
+    postFetch(nameInput, bioInput,imageInput, personId)
+}
+
+function postFetch(name, bio, image_url, personId) {
+    console.log(name, bio, image_url, personId)
+    fetch(website, {
+        method: "POST"
+        headers:
+    })
+    
 }
