@@ -1,6 +1,7 @@
 const website = "http://localhost:3000/api/v1/bunnies"
 
 document.addEventListener('DOMContentLoaded', () => {
+    //fetch and load bunny
     getBunnies()
 
     const createBunnyForm = document.querySelector("create-bunny-form")
@@ -8,23 +9,26 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 function getBunnies() {
-    fetch(website)
+    fetch(website)              //Get request    
     .then(response => response.json())
     .then(bunnies => {
         bunnies.data.forEach(bunny => {
-            const bunnyMarkup = 
-            `<div data-id=${bunny.id}>
-                <img src=${bunny.attributes.image_url} height="200" width="250">
-                <h3>${bunny.attributes.name}</h3>
-                <p>${bunny.attributes.bio}</p>
-                <p>Adopted by: ${bunny.attributes.person.name}</p>
-                <button data-id=${bunny.id}>edit</button>
-            </div> 
-            <br><br>`
-
-            document.querySelector('#bunny-container').innerHTML += bunnyMarkup
+            render(bunny)
         })
     })
+}
+
+function render(bunny){
+    const bunnyMarkup =         //manipulating the DOM
+    `<div data-id=${bunny.id}>
+        <img src=${bunny.attributes.image_url} height="200" width="250">
+        <h3>${bunny.attributes.name}</h3>
+        <p>${bunny.attributes.bio}</p>
+        <p>Adopted by: ${bunny.attributes.person.name}</p>
+        <button data-id=${bunny.id}>edit</button>
+    </div> 
+    <br><br>`;
+    document.querySelector('#bunny-container').innerHTML += bunnyMarkup     //updating the bunny container
 }
 
 function createFormHandler(e) {
@@ -39,6 +43,7 @@ function createFormHandler(e) {
 function postFetch(name, bio, image_url, person_id) {
     //build body object outside of fetch
     const bodyData = {name, bio, image_url, person_id}
+    
     //Post request
     fetch(website, {
         method: "POST",
@@ -47,18 +52,9 @@ function postFetch(name, bio, image_url, person_id) {
     })
     .then(response => response.json())
     .then(bunny => {
-        const bunnyData = bunny.data.attributes //getting data object
-        const bunnyMarkup = 
-            `<div data-id=${bunny.id}>
-                <img src=${bunnyData.image_url} height="200" width="250">
-                <h3>${bunnyData.name}</h3>
-                <p>${bunnyData.bio}</p>
-                <p>Adopted by: ${bunnyData.person.name}</p>
-                <button data-id=${bunnyData.id}>edit</button>
-            </div> 
-            <br><br>`
-
-            document.querySelector('#bunny-container').innerHTML += bunnyMarkup
+        console.log(bunny);
+        const bunnyData = bunny.data
+        render(bunnyData)
     })
     
 }
