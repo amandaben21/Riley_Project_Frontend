@@ -36,11 +36,29 @@ function createFormHandler(e) {
     postFetch(nameInput, bioInput,imageInput, personId)
 }
 
-function postFetch(name, bio, image_url, personId) {
-    console.log(name, bio, image_url, personId)
+function postFetch(name, bio, image_url, person_id) {
+    //build body object outside of fetch
+    const bodyData = {name, bio, image_url, person_id}
+    //Post request
     fetch(website, {
-        method: "POST"
-        headers:
+        method: "POST",
+        headers: {"Content-Type: "application/json"},
+        body: JSON.stringify(bodyData)
+    })
+    .then(response => response.json())
+    .then(bunny => {
+        const bunnyData = bunny.data.attributes //getting data object
+        const bunnyMarkup = 
+            `<div data-id=${bunny.id}>
+                <img src=${bunnyData.image_url} height="200" width="250">
+                <h3>${bunnyData.name}</h3>
+                <p>${bunnyData.bio}</p>
+                <p>Adopted by: ${bunnyData.person.name}</p>
+                <button data-id=${bunnyData.id}>edit</button>
+            </div> 
+            <br><br>`
+
+            document.querySelector('#bunny-container').innerHTML += bunnyMarkup
     })
     
 }
