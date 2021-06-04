@@ -4,7 +4,7 @@ class Bunny {
         this.name = bunnyAttributes.name
         this.bio = bunnyAttributes.bio
         this.image_url = bunnyAttributes.image_url
-        this.person_id = bunnyAttributes.person_id
+        this.feeling_id = bunnyAttributes.feeling_id
         Bunny.all.push(this)
     }
     renderBunnyBoo(){
@@ -13,7 +13,7 @@ class Bunny {
             <img src=${this.image_url} height="200" width="250">
             <h3>${this.name}</h3>
             <p>${this.bio}</p>
-            <p>Adopted by: ${this.person.name}</p>
+            <p>How do you feel about your bunny today?: ${this.feeling.name}</p>
             <button data-id=${this.id}>edit</button>
         </div>
         <br><br>`;

@@ -28,20 +28,20 @@ function createFormHandler(e) {
     const nameInput = document.querySelector('#input-name').value 
     const bioInput = document.querySelector('#input-bio').value
     const imageInput = document.querySelector('#input-image_url').value
-    const personId = parseInt(document.querySelector('#people').value)
-    postFetch(nameInput, bioInput,imageInput, personId)
+    const feelingId = parseInt(document.querySelector('#feelings').value)
+    postFetch(nameInput, bioInput,imageInput, feelingId)
 }
 
-function postFetch(name, bio, image_url, person_id) {
+function postFetch(name, bio, image_url, feeling_id) {
     //build body object outside of fetch
-    const bodyData = {name, bio, image_url, person_id}
+    const bodyData = {name, bio, image_url, feeling_id}
     
     //Post request
     fetch(website, {
         method: "POST",
         mode: 'cors',
         headers:{
-            "Content-Type: "application/json"
+        "Content-Type: "application/json"
         },
         body: JSON.stringify(bodyData)
     })
