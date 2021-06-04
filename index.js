@@ -39,7 +39,10 @@ function postFetch(name, bio, image_url, person_id) {
     //Post request
     fetch(website, {
         method: "POST",
-        headers:{"Content-Type: "application/json"},
+        mode: 'cors',
+        headers:{
+            "Content-Type: "application/json"
+        },
         body: JSON.stringify(bodyData)
     })
     
