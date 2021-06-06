@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //fetch and load bunny
     getBunnies()
 
-    const createBunnyForm = document.querySelector("create-bunny-form")
+    const createBunnyForm = document.querySelector("#create-bunny-form")
     createBunnyForm.addEventListener("submit",(e) => createFormHandler(e))
 })
 
@@ -16,7 +16,7 @@ function getBunnies() {
             
             let newBunny = new Bunny(bunny, bunny.attributes)
             
-            document.querySelector('#bunny-container').innerHTML += newBunny.renderBunnyBoo()
+            document.querySelector('#bunny-container').innerHTML += newBunny.renderBunnyCard()
         })
     })
 }
@@ -26,21 +26,24 @@ function getBunnies() {
 function createFormHandler(e) {
     e.preventDefault()
     const nameInput = document.querySelector('#input-name').value 
+    const ageInput = parseInt(document.querySelector('#input-age').value)
+    const genderInput = document.querySelector('#input-gender').value
+    const colorInput = document.querySelector('#input-color').value
+    const weightInput = document.querySelector('#input-weight').value   
     const bioInput = document.querySelector('#input-bio').value
-    const imageInput = document.querySelector('#input-image_url').value
-    const feelingId = parseInt(document.querySelector('#feelings').value)
-    postFetch(nameInput, bioInput,imageInput, feelingId)
+    const imageInput = document.querySelector('#input-url').value
+    const breedId = parseInt(document.querySelector('#breeds').value)
+    postFetch(nameInput, ageInput, genderInput, colorInput, weightInput, bioInput, imageInput, breedId)
 }
 
-function postFetch(name, bio, image_url, feeling_id) {
+function postFetch(name, age, gender, color, weight, bio, image_url, breed_id) {
     //build body object outside of fetch
-    const bodyData = {name, bio, image_url, feeling_id}
+    const bodyData = {name, age, gender, color, weight, bio, image_url, breed_id}
     
     //Post request
     fetch(website, {
         method: "POST",
-        mode: 'cors',
-        headers:{"Content-Type" : "application/json"},
+        headers:{"Content-Type": "application/json"},
         body: JSON.stringify(bodyData)
     })
     
@@ -49,7 +52,7 @@ function postFetch(name, bio, image_url, feeling_id) {
         console.log(bunny);
         const bunnyData = bunny.data
         let newBunny = new Bunny(bunnyData, bunnyData.attributes)
-            
-        document.querySelector('#bunny-container').innerHTML += newBunny.renderBunnyBoo()
+    
+        document.querySelector('#bunny-container').innerHTML += newBunny.renderBunnyCard()
     })
 }
