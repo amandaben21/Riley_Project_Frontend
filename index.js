@@ -3,10 +3,19 @@ const website = "http://localhost:3000/api/v1/bunnies"
 document.addEventListener('DOMContentLoaded', () => {
     //fetch and load bunny
     getBunnies()
-
     const createBunnyForm = document.querySelector("#create-bunny-form")
     createBunnyForm.addEventListener("submit",(e) => createFormHandler(e))
 })
+
+document.addEventListener("click", function(e) {
+    const bunnyCard = document.getElementById(`${e.target.dataset.id}`)
+  
+    if(e.target.matches("#delete-bunny-button")) {
+      e.preventDefault()
+      deleteBunny(e.target.dataset.id)
+      bunnyCard.remove(bunnyCard)
+    }
+  })
 
 function getBunnies() {
     fetch(website)              //Get request    
@@ -20,7 +29,6 @@ function getBunnies() {
         })
     })
 }
-
 
 
 function createFormHandler(e) {
@@ -53,6 +61,21 @@ function postFetch(name, age, gender, color, weight, bio, image_url, breed_id) {
         const bunnyData = bunny.data
         let newBunny = new Bunny(bunnyData, bunnyData.attributes)
     
-        document.querySelector('#bunny-container').innerHTML += newBunny.renderBunnyCard()
+        document.querySelector('#bunny-container').innerHTML += newBunny.renderBunnyCard();
+
+        this.location.reload()
+
     })
+}
+
+function deleteBunny(id) {
+
+    fetch(`http://localhost:3000/api/v1/bunnies/${id}`, {
+      method: "DELETE" 
+    })
+    .then(response => response.json())
+    .then(response => console.log(response))
+
+    this.location.reload()
+
 }

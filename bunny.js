@@ -1,7 +1,7 @@
 class Bunny {
     constructor(bunny, bunnyAttributes){
-        this.image_url = bunnyAttributes.image_url
         this.id = bunny.id
+        this.image_url = bunnyAttributes.image_url
         this.name = bunnyAttributes.name
         this.age = bunnyAttributes.age
         this.gender = bunnyAttributes.gender
@@ -9,10 +9,10 @@ class Bunny {
         this.weight = bunnyAttributes.weight
         this.bio = bunnyAttributes.bio
         this.breed = bunnyAttributes.breed
-        Bunny.all.push(this)
+        Bunny.all.push(this);
     }
     
-    renderBunnyCard(){
+    renderBunnyCard() {
         return `     
         <div data-id=${this.id}>
             <img src=${this.image_url} height="200" width="250">
@@ -25,7 +25,10 @@ class Bunny {
                 <h6>Bio: ${this.bio}</h6>
                 <h6>Breed: ${this.breed.name}</h6>
             </p>
-            <button data-id=${this.id}>edit</button>
+            <div class="btn-group">
+              <button data-id=${this.id} id="delete-bunny-button" type="button" class="btn btn-sm btn-outline-secondary">Delete Bunny</button>
+            </div>
+            
         </div>
         <br><br>`;
     }
