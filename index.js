@@ -70,12 +70,10 @@ function postFetch(name, age, gender, color, weight, bio, image_url, breed_id) {
 
 function deleteBunny(id) {
 
-    fetch(`http://localhost:3000/api/v1/bunnies/${id}`, {
+    fetch(`${website}/${id}`, {
       method: "DELETE" 
     })
     .then(response => response.json())
     .then(response => console.log(response))
-
-    this.location.reload()
 
 }
