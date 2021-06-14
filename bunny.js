@@ -21,6 +21,10 @@ class Bunny {
                 <div class="card-body">
                     <h5 class="card-title">${this.name}</h5>
                     <p class="card-text">${this.bio}</p>
+                    <h6>Age: ${this.age}</h6>
+                    <h6>Gender: ${this.gender}</h6>
+                    <h6>Color: ${this.color}</h6>
+                    <h6>Weight: ${this.weight} lbs</h6>
                 
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="btn-group">
