@@ -1,5 +1,7 @@
 const website = "http://localhost:3000/api/v1/bunnies"
 
+
+
 document.addEventListener('DOMContentLoaded', () => {
     //fetch and load bunny
     getBunnies()
@@ -17,7 +19,9 @@ document.addEventListener("click", function(e) {
     }
   })
 
-function getBunnies() {
+
+
+  function getBunnies() {
     fetch(website)              //Get request    
     .then(response => response.json())
     .then(bunnies => {
@@ -75,5 +79,5 @@ function deleteBunny(id) {
     })
     .then(response => response.json())
     .then(response => console.log(response))
-
+ 
 }
