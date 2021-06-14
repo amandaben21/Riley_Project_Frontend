@@ -1,7 +1,7 @@
 <h1 align="center">Welcome to Riley_Project_Frontend 👋</h1>
 <p>
   <a href="#" target="_blank">
-    <img alt="License: Amanda Contreras" src="https://img.shields.io/badge/License-Amanda Contreras-yellow.svg" />
+    <img alt="License: MIT" src=https://opensource.org/licenses/MIT/>
   </a>
 </p>
 
