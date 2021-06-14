@@ -1,9 +1,4 @@
 <h1 align="center">Welcome to Riley_Project_Frontend 👋</h1>
-<p>
-  <a href="#" target="_blank">
-    <img alt="License: MIT" src=https://opensource.org/licenses/MIT/>
-  </a>
-</p>
 
 > This app is dedicated to my bunny Riley who passed away this June 2021. The Riley Project is for people who foster bunnies and is trying to find a warm and loving family who will accept and love a bunny as their own, accepting them into their family. This site will allow the foster homes to post up bunnies that are available for adoption.
 
