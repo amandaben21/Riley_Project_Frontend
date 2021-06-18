@@ -1,6 +1,6 @@
 const searchBar = document.querySelector("#search-bar")
 
-document.addEventListener("click", function(e){
+searchBar.addEventListener("click", function(e){
     
     filterBunny(e)
 })
