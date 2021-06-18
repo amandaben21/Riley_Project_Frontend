@@ -62,5 +62,16 @@ class Bunny {
         //</div>
         //<br><br>`;
     }
+
+    addBunny(){
+        const bunnyListArea = document.querySelector("#bunny-list-area");
+        
+        bunnyListArea.innerHTML += `
+            <div>
+                <h2 id=${this.name}</h2><br>
+            </div>
+        `
+        
+      }
 }
 Bunny.all = [];

@@ -9,6 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
     createBunnyForm.addEventListener("submit",(e) => createFormHandler(e))
 })
 
+
+
 document.addEventListener("click", function(e) {
     const bunnyCard = document.getElementById(`${e.target.dataset.id}`)
   
@@ -17,11 +19,10 @@ document.addEventListener("click", function(e) {
       deleteBunny(e.target.dataset.id)
       bunnyCard.remove(bunnyCard)
     }
-  })
+})
 
 
-
-  function getBunnies() {
+function getBunnies() {
     fetch(website)              //Get request    
     .then(response => response.json())
     .then(bunnies => {
@@ -30,8 +31,10 @@ document.addEventListener("click", function(e) {
             let newBunny = new Bunny(bunny, bunny.attributes)
             
             document.querySelector('#bunny-container').innerHTML += newBunny.renderBunnyCard()
+            
         })
-    })
+           
+    })  
 }
 
 
@@ -81,3 +84,4 @@ function deleteBunny(id) {
     .then(response => console.log(response))
  
 }
+
